@@ -6,6 +6,7 @@ import br.com.effecti.licitacao.model.Licitacao;
 import br.com.effecti.licitacao.provider.LicitacaoIntegracao;
 import br.com.effecti.licitacao.provider.LicitacaoProvider;
 import br.com.effecti.licitacao.repository.LicitacaoRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -76,7 +77,7 @@ public class LicitacaoService {
 
     public Licitacao setLidaTrueById(Long id) {
         Licitacao licitacao = licitacaoRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Licitação não encontrada com o ID: " + id));
+                .orElseThrow(() -> new EntityNotFoundException("Licitação não encontrada com o ID: " + id));
 
         licitacao.setLida(true);
         return licitacaoRepository.save(licitacao);

@@ -97,7 +97,7 @@ public class ComprasNetLicitacaoProvider implements LicitacaoProvider {
     }
     private static LocalDateTime getEntregaProposta(Element licitacaoForm) {
         String entregaProposta = removeSpecialSpaceChar(licitacaoForm.select("b:contains(Entrega da Proposta)").first().nextSibling().toString().trim());
-        DateTimeFormatter entregaPropostaFormatter = DateTimeFormatter.ofPattern("' a partir de' dd/MM/yyyy 'às' HH:mm'Hs'");
+        DateTimeFormatter entregaPropostaFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy 'às' HH:mm'Hs'");
         return LocalDateTime.parse(entregaProposta, entregaPropostaFormatter);
     }
 
